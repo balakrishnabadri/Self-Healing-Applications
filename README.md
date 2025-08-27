@@ -41,42 +41,37 @@ git clone https://github.com/balakrishnabadri25/Self-Healing-Applications.git
 cd Self-Healing-Applications
 ```
 ### 2. Create and Activate a Virtual Environment
-bash
-Copy code
+```bash
 python -m venv venv
 Windows
 
-bash
-Copy code
 venv\Scripts\activate
 Mac/Linux
 
-bash
-Copy code
 source venv/bin/activate
+```
 ### 3. Install Dependencies
-bash
-Copy code
+```bash
+
 pip install -r requirements.txt
 If requirements.txt is missing, install manually:
 
-bash
-Copy code
 pip install scikit-learn pandas joblib streamlit
+```
 ### 4. Train the Model
-bash
-Copy code
+```bash
 python train_model.py
 This creates model.joblib which will be used for anomaly detection.
-
+```
 ### 5. Run the Self-Healing System
-bash
-Copy code
+```
 python self_healing.py
+```
 ### 6. Launch the Streamlit Dashboard
-bash
-Copy code
+```
+
 streamlit run dashboard.py
+```
 The dashboard will open in your browser (default: http://localhost:8501).
 
 ### Simple Setup:
