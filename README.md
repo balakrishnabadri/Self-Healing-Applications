@@ -39,7 +39,8 @@ Copy code
 ```bash
 git clone https://github.com/balakrishnabadri25/Self-Healing-Applications.git
 cd Self-Healing-Applications
-2. Create and Activate a Virtual Environment
+```
+### 2. Create and Activate a Virtual Environment
 bash
 Copy code
 python -m venv venv
@@ -53,7 +54,7 @@ Mac/Linux
 bash
 Copy code
 source venv/bin/activate
-3. Install Dependencies
+### 3. Install Dependencies
 bash
 Copy code
 pip install -r requirements.txt
@@ -62,28 +63,32 @@ If requirements.txt is missing, install manually:
 bash
 Copy code
 pip install scikit-learn pandas joblib streamlit
-4. Train the Model
+### 4. Train the Model
 bash
 Copy code
 python train_model.py
 This creates model.joblib which will be used for anomaly detection.
 
-5. Run the Self-Healing System
+### 5. Run the Self-Healing System
 bash
 Copy code
 python self_healing.py
-6. Launch the Streamlit Dashboard
+### 6. Launch the Streamlit Dashboard
 bash
 Copy code
 streamlit run dashboard.py
 The dashboard will open in your browser (default: http://localhost:8501).
 
-📊 Logs
+### Simple Setup:
+-> Install dependencies like python scikit-learn streamlit
+-> python -m streamlit run dashboard.py
+
+### 📊 Logs
 logs.csv → Input log data used for training/testing.
 
 actions_log.csv → Record of actions performed by the self-healing system.
 
-🛠 Future Enhancements
+### 🛠 Future Enhancements
 Support for real-time streaming logs.
 
 More advanced ML models for anomaly detection.
@@ -92,7 +97,7 @@ Containerization with Docker for easier deployment.
 
 Integration with external monitoring tools (e.g., Prometheus, Grafana).
 
-🤝 Contributing
+### 🤝 Contributing
 Contributions are welcome!
 
 Fork the repo
@@ -103,5 +108,5 @@ Commit changes
 
 Open a pull request
 
-📜 License
+### 📜 License
 This project is licensed under the MIT License.
