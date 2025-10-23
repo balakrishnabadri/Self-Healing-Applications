@@ -5,6 +5,21 @@ from datetime import datetime
 import os
 import time
 
+# --- Clear old rows but keep CSV headers ---
+if os.path.exists("actions_log.csv"):
+    try:
+        # Read headers from existing file
+        df_temp = pd.read_csv("actions_log.csv", nrows=0)
+        df_temp.to_csv("actions_log.csv", index=False)  # write only headers back
+    except Exception:
+        # If file empty or missing, recreate with default headers
+        cols = ["timestamp", "message", "prediction", "action", "confidence"]
+        pd.DataFrame(columns=cols).to_csv("actions_log.csv", index=False)
+else:
+    # If file doesn't exist at all, create it with headers
+    cols = ["timestamp", "message", "prediction", "action", "confidence"]
+    pd.DataFrame(columns=cols).to_csv("actions_log.csv", index=False)
+
 st.set_page_config(page_title="AIOps Self-Healing", layout="wide")
 st.title("🤖 AIOps Self-Healing Simulator")
 st.markdown("Simulates logs, detects anomalies, and applies remedial actions automatically.")
@@ -49,9 +64,7 @@ else:
         placeholder = st.empty()
         predict_and_render(user_msg, 0, placeholder)
 
+# --- Display remediation logs ---
 st.header("Remediation Actions Log")
-if os.path.exists("actions_log.csv"):
-    df_actions = pd.read_csv("actions_log.csv")
-    st.dataframe(df_actions.sort_values("timestamp", ascending=False).head(50))
-else:
-    st.info("No actions logged yet.")
+df_actions = pd.read_csv("actions_log.csv")
+st.dataframe(df_actions.sort_values("timestamp", ascending=False).head(50))
